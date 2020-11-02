@@ -3,7 +3,7 @@ Warning: Using a password on the command line interface can be insecure.
 SELECT * FROM OtherUniversity
 --------------
 
-Empty set (0.00 sec)
+Empty set (0.01 sec)
 
 --------------
 LOAD DATA LOCAL INFILE '/home/centos/tbuwadi/assignment2/loaddatafall2020.txt' INTO TABLE OtherUniversity
@@ -11,7 +11,7 @@ FIELDS TERMINATED BY ','
 LINES TERMINATED  BY '\n'
 --------------
 
-Query OK, 7 rows affected (0.05 sec)
+Query OK, 7 rows affected (0.06 sec)
 Records: 7  Deleted: 0  Skipped: 0  Warnings: 0
 
 --------------
@@ -35,7 +35,7 @@ SELECT * FROM OtherUniversity
 SELECT * FROM WesternCourse
 --------------
 
-Empty set (0.02 sec)
+Empty set (0.04 sec)
 
 --------------
 INSERT INTO WesternCourse VALUES('cs1026', 'Computer Science Fundamentals I', '0.5', 'A/B')
@@ -53,31 +53,31 @@ Query OK, 1 row affected (0.01 sec)
 INSERT INTO WesternCourse VALUES('cs2210', 'Algorithms and Data Structures', '1.0', 'A/B')
 --------------
 
-Query OK, 1 row affected (0.02 sec)
+Query OK, 1 row affected (0.19 sec)
 
 --------------
 INSERT INTO WesternCourse VALUES('cs3319', 'Databases', '0.5', 'A/B')
 --------------
 
-Query OK, 1 row affected (0.01 sec)
+Query OK, 1 row affected (0.00 sec)
 
 --------------
 INSERT INTO WesternCourse VALUES('cs2120', 'Modern Survival Skills I: Coding Essentials', '0.5', 'A/B')
 --------------
 
-Query OK, 1 row affected (0.07 sec)
+Query OK, 1 row affected (0.05 sec)
 
 --------------
 INSERT INTO WesternCourse VALUES('cs4490', 'Thesis', '0.5', 'Z')
 --------------
 
-Query OK, 1 row affected (0.00 sec)
+Query OK, 1 row affected (0.01 sec)
 
 --------------
 INSERT INTO WesternCourse VALUES('cs0020', 'Intro to Coding using Pascal and Fortran', '1.0', "")
 --------------
 
-Query OK, 1 row affected (0.01 sec)
+Query OK, 1 row affected (0.03 sec)
 
 --------------
 INSERT INTO WesternCourse VALUES('cs2222', 'Intro to Website Development with React', '0.5', "A/B")
@@ -154,37 +154,37 @@ Empty set (0.00 sec)
 INSERT INTO  OtherCourse VALUES('CompSci022', 'Introduction to Programming', '1', '0.5', '2')
 --------------
 
-Query OK, 1 row affected (0.02 sec)
+Query OK, 1 row affected (0.09 sec)
 
 --------------
 INSERT INTO  OtherCourse VALUES('CompSci033', 'Intro to Programming for Med Students', '3', '0.5', '2')
 --------------
 
-Query OK, 1 row affected (0.01 sec)
+Query OK, 1 row affected (0.00 sec)
 
 --------------
 INSERT INTO  OtherCourse VALUES('CompSci021', 'Packages', '1', '0.5', '2')
 --------------
 
-Query OK, 1 row affected (0.00 sec)
+Query OK, 1 row affected (0.01 sec)
 
 --------------
 INSERT INTO  OtherCourse VALUES('CompSci222', 'Introduction to Databases', '2', '1.0', '2')
 --------------
 
-Query OK, 1 row affected (0.07 sec)
+Query OK, 1 row affected (0.02 sec)
 
 --------------
 INSERT INTO  OtherCourse VALUES('CompSci023', 'Advanced Programming', '1', '0.5', '2')
 --------------
 
-Query OK, 1 row affected (0.01 sec)
+Query OK, 1 row affected (0.00 sec)
 
 --------------
 INSERT INTO  OtherCourse VALUES('CompSci011', 'Intro to Computer Science', '2', '0.5', '4')
 --------------
 
-Query OK, 1 row affected (0.00 sec)
+Query OK, 1 row affected (0.05 sec)
 
 --------------
 INSERT INTO  OtherCourse VALUES('CompSci123', 'Using UNIX', '2', '0.5', '4')
@@ -202,25 +202,25 @@ Query OK, 1 row affected (0.00 sec)
 INSERT INTO  OtherCourse VALUES('CompSci022', 'Advanced Programming', '1', '0.5', '66')
 --------------
 
-Query OK, 1 row affected (0.03 sec)
+Query OK, 1 row affected (0.16 sec)
 
 --------------
 INSERT INTO  OtherCourse VALUES('CompSci319', 'Using Databases', '3', '0.5', '66')
 --------------
 
-Query OK, 1 row affected (0.00 sec)
+Query OK, 1 row affected (0.10 sec)
 
 --------------
 INSERT INTO  OtherCourse VALUES('CompSci333', 'Graphics', '3', '0.5', '55')
 --------------
 
-Query OK, 1 row affected (0.14 sec)
+Query OK, 1 row affected (0.01 sec)
 
 --------------
 INSERT INTO  OtherCourse VALUES('CompSci444', 'Networks', '4', '0.5', '55')
 --------------
 
-Query OK, 1 row affected (0.08 sec)
+Query OK, 1 row affected (0.02 sec)
 
 --------------
 INSERT INTO  OtherCourse VALUES('CompSci022', 'Using Packages', '1', '0.5', '77')
@@ -244,7 +244,7 @@ Query OK, 1 row affected (0.01 sec)
 INSERT INTO  OtherCourse VALUES('CompSci555', 'Creating an App Using React Native', '1', '0.5', '97')
 --------------
 
-Query OK, 1 row affected (0.01 sec)
+Query OK, 1 row affected (0.00 sec)
 
 --------------
 SELECT * FROM OtherCourse
@@ -288,55 +288,55 @@ Query OK, 1 row affected (0.01 sec)
 INSERT INTO  isEquivalentTo VALUES('cs1026','CompSci033','2','2013-01-02')
 --------------
 
-Query OK, 1 row affected (0.01 sec)
+Query OK, 1 row affected (0.00 sec)
 
 --------------
 INSERT INTO  isEquivalentTo VALUES('cs1026','CompSci011','4','1997-02-09')
 --------------
 
-Query OK, 1 row affected (0.13 sec)
+Query OK, 1 row affected (0.10 sec)
 
 --------------
 INSERT INTO  isEquivalentTo VALUES('cs1026','CompSci021','66','2010-01-12')
 --------------
 
-Query OK, 1 row affected (0.00 sec)
+Query OK, 1 row affected (0.01 sec)
 
 --------------
 INSERT INTO  isEquivalentTo VALUES('cs1027','CompSci023','2','2017-06-22')
 --------------
 
-Query OK, 1 row affected (0.06 sec)
+Query OK, 1 row affected (0.02 sec)
 
 --------------
 INSERT INTO  isEquivalentTo VALUES('cs1027','CompSci022','66','2019-09-01')
 --------------
 
-Query OK, 1 row affected (0.01 sec)
+Query OK, 1 row affected (0.00 sec)
 
 --------------
 INSERT INTO  isEquivalentTo VALUES('cs2210','CompSci101','77','1998-07-12')
 --------------
 
-Query OK, 1 row affected (0.00 sec)
+Query OK, 1 row affected (0.01 sec)
 
 --------------
 INSERT INTO  isEquivalentTo VALUES('cs3319','CompSci222','2','1990-09-13')
 --------------
 
-Query OK, 1 row affected (0.01 sec)
+Query OK, 1 row affected (0.16 sec)
 
 --------------
 INSERT INTO  isEquivalentTo VALUES('cs3319','CompSci319','66','1987-09-21')
 --------------
 
-Query OK, 1 row affected (0.01 sec)
+Query OK, 1 row affected (0.00 sec)
 
 --------------
 INSERT INTO  isEquivalentTo VALUES('cs2120','CompSci022','2','2018-12-10')
 --------------
 
-Query OK, 1 row affected (0.10 sec)
+Query OK, 1 row affected (0.03 sec)
 
 --------------
 INSERT INTO  isEquivalentTo VALUES('cs0020','CompSci022','2','1999-09-17')
@@ -444,7 +444,7 @@ SELECT * FROM OtherCourse
 UPDATE OtherCourse SET TaughtToYear=1 WHERE OtherCourseName LIKE 'Intro%'
 --------------
 
-Query OK, 4 rows affected (0.01 sec)
+Query OK, 4 rows affected (0.09 sec)
 Rows matched: 6  Changed: 4  Warnings: 0
 
 --------------

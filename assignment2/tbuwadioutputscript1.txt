@@ -12,13 +12,13 @@ SHOW databases
 | tbuwadiassign2db   |
 | vetoffice          |
 +--------------------+
-5 rows in set (0.01 sec)
+5 rows in set (0.00 sec)
 
 --------------
 DROP DATABASE IF EXISTS tbuwadiassign2db
 --------------
 
-Query OK, 5 rows affected (0.76 sec)
+Query OK, 4 rows affected (0.36 sec)
 
 --------------
 CREATE DATABASE tbuwadiassign2db
@@ -73,7 +73,7 @@ CREATE TABLE WesternCourse(
 )
 --------------
 
-Query OK, 0 rows affected (0.17 sec)
+Query OK, 0 rows affected (0.20 sec)
 
 --------------
 CREATE TABLE OtherUniversity(
@@ -87,7 +87,7 @@ CREATE TABLE OtherUniversity(
 )
 --------------
 
-Query OK, 0 rows affected (0.26 sec)
+Query OK, 0 rows affected (0.20 sec)
 
 --------------
 CREATE TABLE OtherCourse(
@@ -101,7 +101,7 @@ CREATE TABLE OtherCourse(
 )
 --------------
 
-Query OK, 0 rows affected (0.14 sec)
+Query OK, 0 rows affected (0.27 sec)
 
 --------------
 CREATE TABLE isEquivalentTo(
@@ -115,7 +115,7 @@ CREATE TABLE isEquivalentTo(
 )
 --------------
 
-Query OK, 0 rows affected (0.15 sec)
+Query OK, 0 rows affected (0.23 sec)
 
 --------------
 SHOW TABLES

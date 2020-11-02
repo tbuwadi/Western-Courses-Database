@@ -1,17 +1,4 @@
 Warning: Using a password on the command line interface can be insecure.
-ERROR 1046 (3D000) at line 2: No database selected
-ERROR 1046 (3D000) at line 12: No database selected
-ERROR 1046 (3D000) at line 15: No database selected
-ERROR 1046 (3D000) at line 20: No database selected
-ERROR 1046 (3D000) at line 23: No database selected
-ERROR 1046 (3D000) at line 27: No database selected
-ERROR 1046 (3D000) at line 30: No database selected
-ERROR 1046 (3D000) at line 37: No database selected
-ERROR 1046 (3D000) at line 40: No database selected
-ERROR 1046 (3D000) at line 45: No database selected
-ERROR 1046 (3D000) at line 52: No database selected
-ERROR 1046 (3D000) at line 57: No database selected
-ERROR 1046 (3D000) at line 62: No database selected
 --------------
 CREATE VIEW tbuwadiassign2view AS 
 SELECT OtherCourseName, OfficialName, NickName, City, CourseName
@@ -23,9 +10,27 @@ AND isEquivalentTo.UniversityNum = OtherUniversity.UniNumber
 AND isEquivalentTo.WesternCourseNumber = WesternCourse.CourseNumber
 --------------
 
+Query OK, 0 rows affected (0.06 sec)
+
 --------------
 SELECT * FROM tbuwadiassign2view
 --------------
+
++---------------------------------------+--------------------------------+----------+-----------+---------------------------------------------+
+| OtherCourseName                       | OfficialName                   | NickName | City      | CourseName                                  |
++---------------------------------------+--------------------------------+----------+-----------+---------------------------------------------+
+| Introduction to Programming           | University Of Toronto          | UofT     | Toronto   | Intro to Coding using Pascal and Fortran    |
+| Intro to Computer Science             | University of Waterloo         | Waterloo | Waterloo  | Computer Science Fundamentals I             |
+| Intro Programming                     | University of British Columbia | UBC      | Vancouver | Computer Science Fundamentals I             |
+| Introduction to Programming           | University Of Toronto          | UofT     | Toronto   | Computer Science Fundamentals I             |
+| Intro to Programming for Med Students | University Of Toronto          | UofT     | Toronto   | Computer Science Fundamentals I             |
+| Advanced Programming                  | University of British Columbia | UBC      | Vancouver | Computer Science Fundamentals II            |
+| Advanced Programming                  | University Of Toronto          | UofT     | Toronto   | Computer Science Fundamentals II            |
+| Introduction to Programming           | University Of Toronto          | UofT     | Toronto   | Modern Survival Skills I: Coding Essentials |
+| Introduction to Using Data Structures | Wilfred Laurier University     | Laurier  | Waterloo  | Algorithms and Data Structures              |
+| Introduction to Databases             | University Of Toronto          | UofT     | Toronto   | Databases                                   |
++---------------------------------------+--------------------------------+----------+-----------+---------------------------------------------+
+10 rows in set (0.00 sec)
 
 --------------
 SELECT * FROM tbuwadiassign2view
@@ -33,19 +38,61 @@ WHERE NickName = "UofT"
 ORDER BY CourseName
 --------------
 
++---------------------------------------+-----------------------+----------+---------+---------------------------------------------+
+| OtherCourseName                       | OfficialName          | NickName | City    | CourseName                                  |
++---------------------------------------+-----------------------+----------+---------+---------------------------------------------+
+| Introduction to Programming           | University Of Toronto | UofT     | Toronto | Computer Science Fundamentals I             |
+| Intro to Programming for Med Students | University Of Toronto | UofT     | Toronto | Computer Science Fundamentals I             |
+| Advanced Programming                  | University Of Toronto | UofT     | Toronto | Computer Science Fundamentals II            |
+| Introduction to Databases             | University Of Toronto | UofT     | Toronto | Databases                                   |
+| Introduction to Programming           | University Of Toronto | UofT     | Toronto | Intro to Coding using Pascal and Fortran    |
+| Introduction to Programming           | University Of Toronto | UofT     | Toronto | Modern Survival Skills I: Coding Essentials |
++---------------------------------------+-----------------------+----------+---------+---------------------------------------------+
+6 rows in set (0.00 sec)
+
 --------------
 SELECT * FROM OtherUniversity
 --------------
+
++-----------+--------------------------------+-----------+--------------+----------+
+| UniNumber | OfficialName                   | City      | ProvinceCode | NickName |
++-----------+--------------------------------+-----------+--------------+----------+
+|         2 | University Of Toronto          | Toronto   | ON           | UofT     |
+|         4 | University of Waterloo         | Waterloo  | ON           | Waterloo |
+|        24 | Concordia University           | Montreal  | QB           | Concord  |
+|        55 | McMaster University            | Hamilton  | ON           | Mac      |
+|        66 | University of British Columbia | Vancouver | BC           | UBC      |
+|        77 | Wilfred Laurier University     | Waterloo  | ON           | Laurier  |
+|        88 | McGill University              | Montreal  | QB           | McGill   |
+|        97 | Tala Buwadi University         | Halifax   | NS           | UofTB    |
++-----------+--------------------------------+-----------+--------------+----------+
+8 rows in set (0.00 sec)
 
 --------------
 DELETE FROM OtherUniversity
 WHERE NickName LIKE "%cord%"
 --------------
 
+Query OK, 1 row affected (0.03 sec)
+
 --------------
 SELECT * FROM OtherUniversity
 --------------
 
++-----------+--------------------------------+-----------+--------------+----------+
+| UniNumber | OfficialName                   | City      | ProvinceCode | NickName |
++-----------+--------------------------------+-----------+--------------+----------+
+|         2 | University Of Toronto          | Toronto   | ON           | UofT     |
+|         4 | University of Waterloo         | Waterloo  | ON           | Waterloo |
+|        55 | McMaster University            | Hamilton  | ON           | Mac      |
+|        66 | University of British Columbia | Vancouver | BC           | UBC      |
+|        77 | Wilfred Laurier University     | Waterloo  | ON           | Laurier  |
+|        88 | McGill University              | Montreal  | QB           | McGill   |
+|        97 | Tala Buwadi University         | Halifax   | NS           | UofTB    |
++-----------+--------------------------------+-----------+--------------+----------+
+7 rows in set (0.00 sec)
+
+ERROR 1451 (23000) at line 32: Cannot delete or update a parent row: a foreign key constraint fails (`tbuwadiassign2db`.`OtherCourse`, CONSTRAINT `OtherCourse_ibfk_1` FOREIGN KEY (`UniNum`) REFERENCES `OtherUniversity` (`UniNumber`))
 --------------
 DELETE FROM OtherUniversity
 WHERE UniNumber = 2
@@ -55,11 +102,46 @@ WHERE UniNumber = 2
 SELECT * FROM OtherUniversity
 --------------
 
++-----------+--------------------------------+-----------+--------------+----------+
+| UniNumber | OfficialName                   | City      | ProvinceCode | NickName |
++-----------+--------------------------------+-----------+--------------+----------+
+|         2 | University Of Toronto          | Toronto   | ON           | UofT     |
+|         4 | University of Waterloo         | Waterloo  | ON           | Waterloo |
+|        55 | McMaster University            | Hamilton  | ON           | Mac      |
+|        66 | University of British Columbia | Vancouver | BC           | UBC      |
+|        77 | Wilfred Laurier University     | Waterloo  | ON           | Laurier  |
+|        88 | McGill University              | Montreal  | QB           | McGill   |
+|        97 | Tala Buwadi University         | Halifax   | NS           | UofTB    |
++-----------+--------------------------------+-----------+--------------+----------+
+7 rows in set (0.00 sec)
+
 --------------
 SELECT * 
 FROM OtherCourse, OtherUniversity
 WHERE OtherCourse.UniNum = OtherUniversity.UniNumber
 --------------
+
++------------+---------------------------------------+--------------+-------------------+--------+-----------+--------------------------------+-----------+--------------+----------+
+| CourseCode | OtherCourseName                       | TaughtToYear | OtherCourseWeight | UniNum | UniNumber | OfficialName                   | City      | ProvinceCode | NickName |
++------------+---------------------------------------+--------------+-------------------+--------+-----------+--------------------------------+-----------+--------------+----------+
+| CompSci021 | Packages                              |            1 | 0.5               |      2 |         2 | University Of Toronto          | Toronto   | ON           | UofT     |
+| CompSci022 | Introduction to Programming           |            1 | 0.5               |      2 |         2 | University Of Toronto          | Toronto   | ON           | UofT     |
+| CompSci023 | Advanced Programming                  |            1 | 0.5               |      2 |         2 | University Of Toronto          | Toronto   | ON           | UofT     |
+| CompSci033 | Intro to Programming for Med Students |            1 | 0.5               |      2 |         2 | University Of Toronto          | Toronto   | ON           | UofT     |
+| CompSci222 | Introduction to Databases             |            1 | 1.0               |      2 |         2 | University Of Toronto          | Toronto   | ON           | UofT     |
+| CompSci011 | Intro to Computer Science             |            1 | 0.5               |      4 |         4 | University of Waterloo         | Waterloo  | ON           | Waterloo |
+| CompSci123 | Using UNIX                            |            2 | 0.5               |      4 |         4 | University of Waterloo         | Waterloo  | ON           | Waterloo |
+| CompSci333 | Graphics                              |            3 | 0.5               |     55 |        55 | McMaster University            | Hamilton  | ON           | Mac      |
+| CompSci444 | Networks                              |            4 | 0.5               |     55 |        55 | McMaster University            | Hamilton  | ON           | Mac      |
+| CompSci021 | Intro Programming                     |            1 | 1.0               |     66 |        66 | University of British Columbia | Vancouver | BC           | UBC      |
+| CompSci022 | Advanced Programming                  |            1 | 0.5               |     66 |        66 | University of British Columbia | Vancouver | BC           | UBC      |
+| CompSci319 | Using Databases                       |            3 | 0.5               |     66 |        66 | University of British Columbia | Vancouver | BC           | UBC      |
+| CompSci022 | Using Packages                        |            1 | 0.5               |     77 |        77 | Wilfred Laurier University     | Waterloo  | ON           | Laurier  |
+| CompSci101 | Introduction to Using Data Structures |            1 | 0.5               |     77 |        77 | Wilfred Laurier University     | Waterloo  | ON           | Laurier  |
+| CompSci444 | Creating a Full Stack Web App         |            1 | 0.5               |     97 |        97 | Tala Buwadi University         | Halifax   | NS           | UofTB    |
+| CompSci555 | Creating an App Using React Native    |            1 | 0.5               |     97 |        97 | Tala Buwadi University         | Halifax   | NS           | UofTB    |
++------------+---------------------------------------+--------------+-------------------+--------+-----------+--------------------------------+-----------+--------------+----------+
+16 rows in set (0.00 sec)
 
 --------------
 DELETE FROM OtherCourse
@@ -70,6 +152,9 @@ WHERE OtherCourse.UniNum = OtherUniversity.UniNumber
 and OtherUniversity.City = "Waterloo" )
 --------------
 
+Query OK, 4 rows affected (0.00 sec)
+
+ERROR 1054 (42S22) at line 54: Unknown column 'UniNumber' in 'IN/ALL/ANY subquery'
 --------------
 DELETE FROM OtherCourse 
 WHERE UniNumber IN ( SELECT UniNumber FROM OtherUniversity WHERE City='waterloo')
@@ -81,8 +166,40 @@ FROM OtherCourse, OtherUniversity
 WHERE OtherCourse.UniNum = OtherUniversity.UniNumber
 --------------
 
++------------+---------------------------------------+--------------+-------------------+--------+-----------+--------------------------------+-----------+--------------+----------+
+| CourseCode | OtherCourseName                       | TaughtToYear | OtherCourseWeight | UniNum | UniNumber | OfficialName                   | City      | ProvinceCode | NickName |
++------------+---------------------------------------+--------------+-------------------+--------+-----------+--------------------------------+-----------+--------------+----------+
+| CompSci021 | Packages                              |            1 | 0.5               |      2 |         2 | University Of Toronto          | Toronto   | ON           | UofT     |
+| CompSci022 | Introduction to Programming           |            1 | 0.5               |      2 |         2 | University Of Toronto          | Toronto   | ON           | UofT     |
+| CompSci023 | Advanced Programming                  |            1 | 0.5               |      2 |         2 | University Of Toronto          | Toronto   | ON           | UofT     |
+| CompSci033 | Intro to Programming for Med Students |            1 | 0.5               |      2 |         2 | University Of Toronto          | Toronto   | ON           | UofT     |
+| CompSci222 | Introduction to Databases             |            1 | 1.0               |      2 |         2 | University Of Toronto          | Toronto   | ON           | UofT     |
+| CompSci333 | Graphics                              |            3 | 0.5               |     55 |        55 | McMaster University            | Hamilton  | ON           | Mac      |
+| CompSci444 | Networks                              |            4 | 0.5               |     55 |        55 | McMaster University            | Hamilton  | ON           | Mac      |
+| CompSci021 | Intro Programming                     |            1 | 1.0               |     66 |        66 | University of British Columbia | Vancouver | BC           | UBC      |
+| CompSci022 | Advanced Programming                  |            1 | 0.5               |     66 |        66 | University of British Columbia | Vancouver | BC           | UBC      |
+| CompSci319 | Using Databases                       |            3 | 0.5               |     66 |        66 | University of British Columbia | Vancouver | BC           | UBC      |
+| CompSci444 | Creating a Full Stack Web App         |            1 | 0.5               |     97 |        97 | Tala Buwadi University         | Halifax   | NS           | UofTB    |
+| CompSci555 | Creating an App Using React Native    |            1 | 0.5               |     97 |        97 | Tala Buwadi University         | Halifax   | NS           | UofTB    |
++------------+---------------------------------------+--------------+-------------------+--------+-----------+--------------------------------+-----------+--------------+----------+
+12 rows in set (0.00 sec)
+
 --------------
 SELECT * FROM tbuwadiassign2view
 --------------
+
++---------------------------------------+--------------------------------+----------+-----------+---------------------------------------------+
+| OtherCourseName                       | OfficialName                   | NickName | City      | CourseName                                  |
++---------------------------------------+--------------------------------+----------+-----------+---------------------------------------------+
+| Introduction to Programming           | University Of Toronto          | UofT     | Toronto   | Intro to Coding using Pascal and Fortran    |
+| Introduction to Programming           | University Of Toronto          | UofT     | Toronto   | Computer Science Fundamentals I             |
+| Introduction to Programming           | University Of Toronto          | UofT     | Toronto   | Modern Survival Skills I: Coding Essentials |
+| Advanced Programming                  | University Of Toronto          | UofT     | Toronto   | Computer Science Fundamentals II            |
+| Intro to Programming for Med Students | University Of Toronto          | UofT     | Toronto   | Computer Science Fundamentals I             |
+| Introduction to Databases             | University Of Toronto          | UofT     | Toronto   | Databases                                   |
+| Intro Programming                     | University of British Columbia | UBC      | Vancouver | Computer Science Fundamentals I             |
+| Advanced Programming                  | University of British Columbia | UBC      | Vancouver | Computer Science Fundamentals II            |
++---------------------------------------+--------------------------------+----------+-----------+---------------------------------------------+
+8 rows in set (0.00 sec)
 
 Bye

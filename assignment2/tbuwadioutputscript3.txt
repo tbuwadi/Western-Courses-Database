@@ -1,27 +1,45 @@
 Warning: Using a password on the command line interface can be insecure.
-ERROR 1046 (3D000) at line 2: No database selected
-ERROR 1046 (3D000) at line 6: No database selected
-ERROR 1046 (3D000) at line 10: No database selected
-ERROR 1046 (3D000) at line 15: No database selected
-ERROR 1046 (3D000) at line 20: No database selected
-ERROR 1046 (3D000) at line 27: No database selected
-ERROR 1046 (3D000) at line 34: No database selected
-ERROR 1046 (3D000) at line 44: No database selected
-ERROR 1046 (3D000) at line 52: No database selected
-ERROR 1046 (3D000) at line 57: No database selected
-ERROR 1046 (3D000) at line 67: No database selected
-ERROR 1046 (3D000) at line 72: No database selected
-ERROR 1046 (3D000) at line 81: No database selected
-ERROR 1046 (3D000) at line 91: No database selected
 --------------
 SELECT CourseName 
 FROM WesternCourse
 --------------
 
++---------------------------------------------+
+| CourseName                                  |
++---------------------------------------------+
+| Intro to Coding using Pascal and Fortran    |
+| Computer Science Fundamentals I             |
+| Computer Science Fundamentals II            |
+| Modern Survival Skills I: Coding Essentials |
+| Algorithms and Data Structures              |
+| Intro to Website Development with React     |
+| Databases                                   |
+| Thesis                                      |
++---------------------------------------------+
+8 rows in set (0.00 sec)
+
 --------------
 SELECT DISTINCT CourseCode
 FROM OtherCourse
 --------------
+
++------------+
+| CourseCode |
++------------+
+| CompSci011 |
+| CompSci021 |
+| CompSci022 |
+| CompSci023 |
+| CompSci033 |
+| CompSci101 |
+| CompSci123 |
+| CompSci222 |
+| CompSci319 |
+| CompSci333 |
+| CompSci444 |
+| CompSci555 |
++------------+
+12 rows in set (0.00 sec)
 
 --------------
 SELECT * 
@@ -29,11 +47,37 @@ FROM WesternCourse
 ORDER BY CourseName
 --------------
 
++--------------+---------------------------------------------+--------------+--------------+
+| CourseNumber | CourseName                                  | CourseWeight | CourseSuffix |
++--------------+---------------------------------------------+--------------+--------------+
+| cs2210       | Algorithms and Data Structures              | 1.0          | A/B          |
+| cs1026       | Computer Science Fundamentals I             | 0.5          | A/B          |
+| cs1027       | Computer Science Fundamentals II            | 0.5          | A/B          |
+| cs3319       | Databases                                   | 0.5          | A/B          |
+| cs0020       | Intro to Coding using Pascal and Fortran    | 1.0          |              |
+| cs2222       | Intro to Website Development with React     | 0.5          | A/B          |
+| cs2120       | Modern Survival Skills I: Coding Essentials | 0.5          | A/B          |
+| cs4490       | Thesis                                      | 0.5          | Z            |
++--------------+---------------------------------------------+--------------+--------------+
+8 rows in set (0.00 sec)
+
 --------------
 SELECT CourseNumber, CourseName 
 FROM WesternCourse 
 WHERE CourseWeight='0.5'
 --------------
+
++--------------+---------------------------------------------+
+| CourseNumber | CourseName                                  |
++--------------+---------------------------------------------+
+| cs1026       | Computer Science Fundamentals I             |
+| cs1027       | Computer Science Fundamentals II            |
+| cs2120       | Modern Survival Skills I: Coding Essentials |
+| cs2222       | Intro to Website Development with React     |
+| cs3319       | Databases                                   |
+| cs4490       | Thesis                                      |
++--------------+---------------------------------------------+
+6 rows in set (0.00 sec)
 
 --------------
 SELECT CourseCode, OtherCourseName 
@@ -43,6 +87,17 @@ ON OtherCourse.UniNum = OtherUniversity.UniNumber
 WHERE OtherUniversity.OfficialName = "University of Toronto"
 --------------
 
++------------+---------------------------------------+
+| CourseCode | OtherCourseName                       |
++------------+---------------------------------------+
+| CompSci021 | Packages                              |
+| CompSci022 | Introduction to Programming           |
+| CompSci023 | Advanced Programming                  |
+| CompSci033 | Intro to Programming for Med Students |
+| CompSci222 | Introduction to Databases             |
++------------+---------------------------------------+
+5 rows in set (0.00 sec)
+
 --------------
 SELECT OtherCourseName, NickName
 FROM OtherCourse
@@ -50,6 +105,15 @@ INNER JOIN OtherUniversity
 ON OtherCourse.UniNum = OtherUniversity.UniNumber
 WHERE OtherCourseName LIKE '%Introduction%'
 --------------
+
++---------------------------------------+----------+
+| OtherCourseName                       | NickName |
++---------------------------------------+----------+
+| Introduction to Programming           | UofT     |
+| Introduction to Databases             | UofT     |
+| Introduction to Using Data Structures | Laurier  |
++---------------------------------------+----------+
+3 rows in set (0.00 sec)
 
 --------------
 SELECT OtherCourseName, OfficialName, CourseName, DateApproved
@@ -61,6 +125,19 @@ AND isEquivalentTo.UniversityNum = OtherUniversity.UniNumber
 AND isEquivalentTo.WesternCourseNumber = WesternCourse.CourseNumber
 --------------
 
++---------------------------------------+--------------------------------+---------------------------------+--------------+
+| OtherCourseName                       | OfficialName                   | CourseName                      | DateApproved |
++---------------------------------------+--------------------------------+---------------------------------+--------------+
+| Intro to Computer Science             | University of Waterloo         | Computer Science Fundamentals I | 1997-02-09   |
+| Intro Programming                     | University of British Columbia | Computer Science Fundamentals I | 2010-01-12   |
+| Introduction to Programming           | University Of Toronto          | Computer Science Fundamentals I | 2015-05-12   |
+| Intro to Programming for Med Students | University Of Toronto          | Computer Science Fundamentals I | 2013-01-02   |
+| Introduction to Using Data Structures | Wilfred Laurier University     | Algorithms and Data Structures  | 1998-07-12   |
+| Introduction to Databases             | University Of Toronto          | Databases                       | 1990-09-13   |
+| Using Databases                       | University of British Columbia | Databases                       | 1987-09-21   |
++---------------------------------------+--------------------------------+---------------------------------+--------------+
+7 rows in set (0.00 sec)
+
 --------------
 SELECT OtherCourseName, NickName 
 FROM OtherCourse, OtherUniversity, isEquivalentTo
@@ -70,11 +147,28 @@ AND isEquivalentTo.UniversityNum = OtherCourse.UniNum
 AND isEquivalentTo.UniversityNum = OtherUniversity.UniNumber
 --------------
 
++---------------------------------------+----------+
+| OtherCourseName                       | NickName |
++---------------------------------------+----------+
+| Intro to Computer Science             | Waterloo |
+| Intro Programming                     | UBC      |
+| Introduction to Programming           | UofT     |
+| Intro to Programming for Med Students | UofT     |
++---------------------------------------+----------+
+4 rows in set (0.00 sec)
+
 --------------
 SELECT COUNT(WesternCourseNumber) 
 FROM isEquivalentTo 
 WHERE WesternCourseNumber = "cs1026"
 --------------
+
++----------------------------+
+| COUNT(WesternCourseNumber) |
++----------------------------+
+|                          4 |
++----------------------------+
+1 row in set (0.00 sec)
 
 --------------
 SELECT CourseName, OtherCourseName, NickName 
@@ -87,11 +181,29 @@ AND isEquivalentTo.UniversityNum = OtherUniversity.UniNumber
 AND isEquivalentTo.WesternCourseNumber = WesternCourse.CourseNumber
 --------------
 
++---------------------------------+---------------------------------------+----------+
+| CourseName                      | OtherCourseName                       | NickName |
++---------------------------------+---------------------------------------+----------+
+| Computer Science Fundamentals I | Intro to Computer Science             | Waterloo |
+| Algorithms and Data Structures  | Introduction to Using Data Structures | Laurier  |
++---------------------------------+---------------------------------------+----------+
+2 rows in set (0.00 sec)
+
 --------------
 SELECT OfficialName 
 FROM OtherUniversity 
 WHERE OtherUniversity.UniNumber NOT IN (SELECT UniversityNum FROM isEquivalentTo)
 --------------
+
++------------------------+
+| OfficialName           |
++------------------------+
+| Concordia University   |
+| McMaster University    |
+| McGill University      |
+| Tala Buwadi University |
++------------------------+
+4 rows in set (0.00 sec)
 
 --------------
 SELECT CourseName, CourseNumber
@@ -103,6 +215,13 @@ ON isEquivalentTo.OtherUniCourseCode = OtherCourse.CourseCode
 WHERE OtherCourse.TaughtToYear = 3 OR OtherCourse.TaughtToYear = 4
 --------------
 
++------------+--------------+
+| CourseName | CourseNumber |
++------------+--------------+
+| Databases  | cs3319       |
++------------+--------------+
+1 row in set (0.00 sec)
+
 --------------
 SELECT CourseName
 FROM WesternCourse
@@ -113,6 +232,15 @@ FROM isEquivalentTo
 GROUP BY WesternCourseNumber
 HAVING COUNT(WesternCourseNumber)>1)
 --------------
+
++----------------------------------+
+| CourseName                       |
++----------------------------------+
+| Computer Science Fundamentals I  |
+| Computer Science Fundamentals II |
+| Databases                        |
++----------------------------------+
+3 rows in set (0.00 sec)
 
 --------------
 SELECT DISTINCT 
@@ -129,5 +257,15 @@ AND NOT WesternCourse.CourseWeight = OtherCourse.OtherCourseWeight
 AND OtherUniversity.UniNumber = isEquivalentTo.UniversityNum
 AND OtherUniversity.UniNumber = OtherCourse.UniNum
 --------------
+
++-----------------------+------------------------------------------+---------------+---------------------------------------+--------------------------------+---------------------+
+| Western Course Number | Western Course Name                      | Course Weight | Other University Course Name          | University Name                | Other Course Weight |
++-----------------------+------------------------------------------+---------------+---------------------------------------+--------------------------------+---------------------+
+| cs0020                | Intro to Coding using Pascal and Fortran | 1.0           | Introduction to Programming           | University Of Toronto          | 0.5                 |
+| cs1026                | Computer Science Fundamentals I          | 0.5           | Intro Programming                     | University of British Columbia | 1.0                 |
+| cs2210                | Algorithms and Data Structures           | 1.0           | Introduction to Using Data Structures | Wilfred Laurier University     | 0.5                 |
+| cs3319                | Databases                                | 0.5           | Introduction to Databases             | University Of Toronto          | 1.0                 |
++-----------------------+------------------------------------------+---------------+---------------------------------------+--------------------------------+---------------------+
+4 rows in set (0.00 sec)
 
 Bye

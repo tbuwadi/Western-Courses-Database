@@ -1,3 +1,5 @@
+USE tbuwadiassign2db;
+
 -- Create View
 CREATE VIEW tbuwadiassign2view AS 
 SELECT OtherCourseName, OfficialName, NickName, City, CourseName

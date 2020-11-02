@@ -1,3 +1,5 @@
+USE tbuwadiassign2db;
+
 -- QUERY 1: 
 SELECT CourseName 
 FROM WesternCourse;
