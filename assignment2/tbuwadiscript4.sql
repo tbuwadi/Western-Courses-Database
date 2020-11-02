@@ -49,6 +49,9 @@ FROM OtherUniversity
 WHERE OtherCourse.UniNum = OtherUniversity.UniNumber
 and OtherUniversity.City = "Waterloo" );
 
+DELETE FROM OtherCourse 
+WHERE UniNumber IN ( SELECT UniNumber FROM OtherUniversity WHERE City='waterloo');
+
 
 -- Show other courses & the info they are associated with
 SELECT * 

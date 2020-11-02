@@ -29,14 +29,13 @@ CREATE TABLE OtherUniversity(
 );
 
 CREATE TABLE OtherCourse(
+    CourseCode varchar(10) NOT NULL,
     OtherCourseName varchar(50) NOT NULL,
     TaughtToYear INT(1) NOT NULL,
-    CourseCode varchar(10) NOT NULL,
     OtherCourseWeight varchar(3) NOT NULL,
     UniNum INT(2) NOT NULL,
-    UNIQUE(UniNum),
     FOREIGN KEY(UniNum) REFERENCES OtherUniversity(UniNumber),
-    PRIMARY KEY(CourseCode)
+    PRIMARY KEY(CourseCode ,UniNum)
 );
 
 CREATE TABLE isEquivalentTo(
@@ -45,8 +44,7 @@ CREATE TABLE isEquivalentTo(
     UniversityNum INT(2) NOT NULL,
     DateApproved DATE NOT NULL,
     FOREIGN KEY (WesternCourseNumber) REFERENCES WesternCourse(CourseNumber) ON DELETE CASCADE,
-    FOREIGN KEY (OtherUniCourseCode) REFERENCES OtherCourse(CourseCode) ON DELETE CASCADE,
-    FOREIGN KEY(UniversityNum) REFERENCES OtherUniversity(UniNumber),
+    FOREIGN KEY (OtherUniCourseCode, UniversityNum) REFERENCES OtherCourse(CourseCode, UniNum) ON DELETE CASCADE,
     PRIMARY KEY (WesternCourseNumber, OtherUniCourseCode, UniversityNum) 
 );
 

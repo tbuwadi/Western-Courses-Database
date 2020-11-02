@@ -1,0 +1,134 @@
+Warning: Using a password on the command line interface can be insecure.
+--------------
+SHOW databases
+--------------
+
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| tbuwadiassign2db   |
+| vetoffice          |
++--------------------+
+5 rows in set (0.01 sec)
+
+--------------
+DROP DATABASE IF EXISTS tbuwadiassign2db
+--------------
+
+Query OK, 5 rows affected (0.76 sec)
+
+--------------
+CREATE DATABASE tbuwadiassign2db
+--------------
+
+Query OK, 1 row affected (0.00 sec)
+
+--------------
+GRANT USAGE ON *.* TO 'ta'@'localhost'
+--------------
+
+Query OK, 0 rows affected (0.00 sec)
+
+--------------
+DROP USER 'ta'@'localhost'
+--------------
+
+Query OK, 0 rows affected (0.00 sec)
+
+--------------
+CREATE USER 'ta'@'localhost' IDENTIFIED BY 'cs3319'
+--------------
+
+Query OK, 0 rows affected (0.00 sec)
+
+--------------
+GRANT ALL PRIVILEGES ON tbuwadiassign2db.* TO 'ta'@'localhost'
+--------------
+
+Query OK, 0 rows affected (0.00 sec)
+
+--------------
+FLUSH PRIVILEGES
+--------------
+
+Query OK, 0 rows affected (0.00 sec)
+
+--------------
+SHOW TABLES
+--------------
+
+Empty set (0.00 sec)
+
+--------------
+CREATE TABLE WesternCourse(
+    CourseNumber varchar(6) NOT NULL,
+    CourseName varchar(50) NOT NULL,
+    CourseWeight varchar(3) NOT NULL,
+    CourseSuffix varchar(3),
+    UNIQUE(CourseNumber),
+    PRIMARY KEY(CourseNumber)
+)
+--------------
+
+Query OK, 0 rows affected (0.17 sec)
+
+--------------
+CREATE TABLE OtherUniversity(
+    UniNumber INT(2) NOT NULL,
+    OfficialName varchar(50) NOT NULL,
+    City varchar(50) NOT NULL,
+    ProvinceCode varchar(2) NOT NULL,
+    NickName varchar(20) NOT NULL,
+    UNIQUE(UniNumber),
+    PRIMARY KEY(UniNumber)
+)
+--------------
+
+Query OK, 0 rows affected (0.26 sec)
+
+--------------
+CREATE TABLE OtherCourse(
+    CourseCode varchar(10) NOT NULL,
+    OtherCourseName varchar(50) NOT NULL,
+    TaughtToYear INT(1) NOT NULL,
+    OtherCourseWeight varchar(3) NOT NULL,
+    UniNum INT(2) NOT NULL,
+    FOREIGN KEY(UniNum) REFERENCES OtherUniversity(UniNumber),
+    PRIMARY KEY(CourseCode ,UniNum)
+)
+--------------
+
+Query OK, 0 rows affected (0.14 sec)
+
+--------------
+CREATE TABLE isEquivalentTo(
+    WesternCourseNumber varchar(6) NOT NULL,
+    OtherUniCourseCode varchar(10) NOT NULL,
+    UniversityNum INT(2) NOT NULL,
+    DateApproved DATE NOT NULL,
+    FOREIGN KEY (WesternCourseNumber) REFERENCES WesternCourse(CourseNumber) ON DELETE CASCADE,
+    FOREIGN KEY (OtherUniCourseCode, UniversityNum) REFERENCES OtherCourse(CourseCode, UniNum) ON DELETE CASCADE,
+    PRIMARY KEY (WesternCourseNumber, OtherUniCourseCode, UniversityNum) 
+)
+--------------
+
+Query OK, 0 rows affected (0.15 sec)
+
+--------------
+SHOW TABLES
+--------------
+
++----------------------------+
+| Tables_in_tbuwadiassign2db |
++----------------------------+
+| OtherCourse                |
+| OtherUniversity            |
+| WesternCourse              |
+| isEquivalentTo             |
++----------------------------+
+4 rows in set (0.00 sec)
+
+Bye

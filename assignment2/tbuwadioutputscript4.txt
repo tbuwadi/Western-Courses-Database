@@ -1,0 +1,88 @@
+Warning: Using a password on the command line interface can be insecure.
+ERROR 1046 (3D000) at line 2: No database selected
+ERROR 1046 (3D000) at line 12: No database selected
+ERROR 1046 (3D000) at line 15: No database selected
+ERROR 1046 (3D000) at line 20: No database selected
+ERROR 1046 (3D000) at line 23: No database selected
+ERROR 1046 (3D000) at line 27: No database selected
+ERROR 1046 (3D000) at line 30: No database selected
+ERROR 1046 (3D000) at line 37: No database selected
+ERROR 1046 (3D000) at line 40: No database selected
+ERROR 1046 (3D000) at line 45: No database selected
+ERROR 1046 (3D000) at line 52: No database selected
+ERROR 1046 (3D000) at line 57: No database selected
+ERROR 1046 (3D000) at line 62: No database selected
+--------------
+CREATE VIEW tbuwadiassign2view AS 
+SELECT OtherCourseName, OfficialName, NickName, City, CourseName
+FROM isEquivalentTo, WesternCourse, OtherUniversity, OtherCourse 
+WHERE TaughtToYear = 1
+AND isEquivalentTo.OtherUniCourseCode = OtherCourse.CourseCode
+AND isEquivalentTo.UniversityNum = OtherCourse.UniNum
+AND isEquivalentTo.UniversityNum = OtherUniversity.UniNumber
+AND isEquivalentTo.WesternCourseNumber = WesternCourse.CourseNumber
+--------------
+
+--------------
+SELECT * FROM tbuwadiassign2view
+--------------
+
+--------------
+SELECT * FROM tbuwadiassign2view
+WHERE NickName = "UofT"
+ORDER BY CourseName
+--------------
+
+--------------
+SELECT * FROM OtherUniversity
+--------------
+
+--------------
+DELETE FROM OtherUniversity
+WHERE NickName LIKE "%cord%"
+--------------
+
+--------------
+SELECT * FROM OtherUniversity
+--------------
+
+--------------
+DELETE FROM OtherUniversity
+WHERE UniNumber = 2
+--------------
+
+--------------
+SELECT * FROM OtherUniversity
+--------------
+
+--------------
+SELECT * 
+FROM OtherCourse, OtherUniversity
+WHERE OtherCourse.UniNum = OtherUniversity.UniNumber
+--------------
+
+--------------
+DELETE FROM OtherCourse
+WHERE EXISTS
+(SELECT * 
+FROM OtherUniversity 
+WHERE OtherCourse.UniNum = OtherUniversity.UniNumber
+and OtherUniversity.City = "Waterloo" )
+--------------
+
+--------------
+DELETE FROM OtherCourse 
+WHERE UniNumber IN ( SELECT UniNumber FROM OtherUniversity WHERE City='waterloo')
+--------------
+
+--------------
+SELECT * 
+FROM OtherCourse, OtherUniversity
+WHERE OtherCourse.UniNum = OtherUniversity.UniNumber
+--------------
+
+--------------
+SELECT * FROM tbuwadiassign2view
+--------------
+
+Bye

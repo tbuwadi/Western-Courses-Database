@@ -1,0 +1,133 @@
+Warning: Using a password on the command line interface can be insecure.
+ERROR 1046 (3D000) at line 2: No database selected
+ERROR 1046 (3D000) at line 6: No database selected
+ERROR 1046 (3D000) at line 10: No database selected
+ERROR 1046 (3D000) at line 15: No database selected
+ERROR 1046 (3D000) at line 20: No database selected
+ERROR 1046 (3D000) at line 27: No database selected
+ERROR 1046 (3D000) at line 34: No database selected
+ERROR 1046 (3D000) at line 44: No database selected
+ERROR 1046 (3D000) at line 52: No database selected
+ERROR 1046 (3D000) at line 57: No database selected
+ERROR 1046 (3D000) at line 67: No database selected
+ERROR 1046 (3D000) at line 72: No database selected
+ERROR 1046 (3D000) at line 81: No database selected
+ERROR 1046 (3D000) at line 91: No database selected
+--------------
+SELECT CourseName 
+FROM WesternCourse
+--------------
+
+--------------
+SELECT DISTINCT CourseCode
+FROM OtherCourse
+--------------
+
+--------------
+SELECT * 
+FROM WesternCourse 
+ORDER BY CourseName
+--------------
+
+--------------
+SELECT CourseNumber, CourseName 
+FROM WesternCourse 
+WHERE CourseWeight='0.5'
+--------------
+
+--------------
+SELECT CourseCode, OtherCourseName 
+FROM OtherCourse
+INNER JOIN OtherUniversity
+ON OtherCourse.UniNum = OtherUniversity.UniNumber 
+WHERE OtherUniversity.OfficialName = "University of Toronto"
+--------------
+
+--------------
+SELECT OtherCourseName, NickName
+FROM OtherCourse
+INNER JOIN OtherUniversity
+ON OtherCourse.UniNum = OtherUniversity.UniNumber
+WHERE OtherCourseName LIKE '%Introduction%'
+--------------
+
+--------------
+SELECT OtherCourseName, OfficialName, CourseName, DateApproved
+FROM isEquivalentTo, WesternCourse, OtherUniversity, OtherCourse 
+WHERE DateApproved < DATE_SUB(NOW(), INTERVAL 5 YEAR)
+AND isEquivalentTo.OtherUniCourseCode = OtherCourse.CourseCode
+AND isEquivalentTo.UniversityNum = OtherCourse.UniNum
+AND isEquivalentTo.UniversityNum = OtherUniversity.UniNumber
+AND isEquivalentTo.WesternCourseNumber = WesternCourse.CourseNumber
+--------------
+
+--------------
+SELECT OtherCourseName, NickName 
+FROM OtherCourse, OtherUniversity, isEquivalentTo
+WHERE isEquivalentTo.WesternCourseNumber = "cs1026"  
+AND isEquivalentTo.OtherUniCourseCode = OtherCourse.CourseCode 
+AND isEquivalentTo.UniversityNum = OtherCourse.UniNum
+AND isEquivalentTo.UniversityNum = OtherUniversity.UniNumber
+--------------
+
+--------------
+SELECT COUNT(WesternCourseNumber) 
+FROM isEquivalentTo 
+WHERE WesternCourseNumber = "cs1026"
+--------------
+
+--------------
+SELECT CourseName, OtherCourseName, NickName 
+FROM WesternCourse, OtherUniversity, OtherCourse, isEquivalentTo 
+WHERE OtherUniversity.City = "Waterloo" 
+AND OtherUniversity.ProvinceCode = "ON"
+AND isEquivalentTo.OtherUniCourseCode = OtherCourse.CourseCode
+AND isEquivalentTo.UniversityNum = OtherCourse.UniNum
+AND isEquivalentTo.UniversityNum = OtherUniversity.UniNumber
+AND isEquivalentTo.WesternCourseNumber = WesternCourse.CourseNumber
+--------------
+
+--------------
+SELECT OfficialName 
+FROM OtherUniversity 
+WHERE OtherUniversity.UniNumber NOT IN (SELECT UniversityNum FROM isEquivalentTo)
+--------------
+
+--------------
+SELECT CourseName, CourseNumber
+FROM isEquivalentTo
+LEFT JOIN WesternCourse
+ON isEquivalentTo.WesternCourseNumber = WesternCourse.CourseNumber
+LEFT JOIN OtherCourse
+ON isEquivalentTo.OtherUniCourseCode = OtherCourse.CourseCode
+WHERE OtherCourse.TaughtToYear = 3 OR OtherCourse.TaughtToYear = 4
+--------------
+
+--------------
+SELECT CourseName
+FROM WesternCourse
+WHERE CourseNumber
+IN 
+(SELECT WesternCourseNumber
+FROM isEquivalentTo
+GROUP BY WesternCourseNumber
+HAVING COUNT(WesternCourseNumber)>1)
+--------------
+
+--------------
+SELECT DISTINCT 
+WesternCourse.CourseNumber AS "Western Course Number", 
+WesternCourse.CourseName AS "Western Course Name" , 
+WesternCourse.CourseWeight AS "Course Weight", 
+OtherCourse.OtherCourseName AS "Other University Course Name" ,
+OtherUniversity.OfficialName AS "University Name" ,
+OtherCourse.OtherCourseWeight AS "Other Course Weight"  
+FROM isEquivalentTo, WesternCourse, OtherUniversity, OtherCourse
+WHERE WesternCourse.CourseNumber = isEquivalentTo.WesternCourseNumber
+AND OtherCourse.CourseCode = isEquivalentTo.OtherUniCourseCode
+AND NOT WesternCourse.CourseWeight = OtherCourse.OtherCourseWeight
+AND OtherUniversity.UniNumber = isEquivalentTo.UniversityNum
+AND OtherUniversity.UniNumber = OtherCourse.UniNum
+--------------
+
+Bye
