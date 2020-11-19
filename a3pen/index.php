@@ -89,9 +89,6 @@ include 'connecttodb.php';
     
     <div class="flex-item">
         <h3>List all Western course information:</h3>
-        <?php
-            include 'getOtherUniversityNames.php';
-        ?>
             <form action="/action_page.php">
                 <p>Order by: </p>
                 <input type="radio" id="courseNumber" name="orderby" value="courseNumber">
@@ -118,6 +115,9 @@ include 'connecttodb.php';
             <select name="uniList" id="uniList">
                 <!-- HAVE TO HANDLE IN PHP -->
                 <option value="" selected disabled hidden>Select University</option>
+                <?php
+                    include 'getOtherUniversityNames.php';
+                ?>
             </select>
             <input type="submit" value="Search">
           </form>
