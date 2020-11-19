@@ -160,6 +160,9 @@ include 'connecttodb.php';
         <select name="courseList" id="courseList">
             <!-- HAVE TO HANDLE IN PHP -->
             <option value="" selected disabled hidden>Select Course</option>
+            <?php
+                    include 'getWesternCoursesInEquivalent.php';
+            ?>
         </select>
         <input type="submit" value="Search">
         <br><br>
