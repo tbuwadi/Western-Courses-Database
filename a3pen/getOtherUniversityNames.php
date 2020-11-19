@@ -5,8 +5,7 @@ if (!$result) {
     die("databases query failed.");
 }
 while ($row = mysqli_fetch_assoc($result)) {
-    echo "<option value=''>";
-    echo $row["OtherUniversity"] . "</option>";
+	echo "<option value='".$row["OfficialName"]."'>".$row["OfficialName"]."</option>";
 }
 mysqli_free_result($result);
 ?>
