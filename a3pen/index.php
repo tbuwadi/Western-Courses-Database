@@ -15,7 +15,7 @@ body{
 }
 h1{
     text-align: center;
-    padding-top: 20px;
+    padding-top: 21px;
 }
 h2{
     padding-top: 20px;
