@@ -277,7 +277,9 @@ include 'connecttodb.php';
         <select name="courseList" id="courseList">
             <!-- HAVE TO HANDLE IN PHP -->
             <option value="" selected disabled hidden>Select Course</option>
-
+            <?php
+                    include 'getOtherCourse.php';
+            ?>
         </select><br><br>
 
         <input type="submit" value="Save Equivalence">
