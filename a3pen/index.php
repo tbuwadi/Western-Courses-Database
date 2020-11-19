@@ -78,7 +78,9 @@ input[type=submit], button{
 </style>
 </head>
 <body>
-
+<?php
+include 'connecttodb.php';
+?>
 <!-- Title -->
 <h1>Western Courses Database</h1>
 
