@@ -268,7 +268,9 @@ include 'connecttodb.php';
         <select name="courseList" id="courseList">
             <!-- HAVE TO HANDLE IN PHP -->
             <option value="" selected disabled hidden>Select Course</option>
-
+            <?php
+                    include 'getWesternCourses.php';
+            ?>
         </select><br><br>
 
         <label for="courseList">Select Equivalent Course:</label><br>
