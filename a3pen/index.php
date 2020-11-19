@@ -89,6 +89,9 @@ include 'connecttodb.php';
     
     <div class="flex-item">
         <h3>List all Western course information:</h3>
+        <?php
+            include 'getOtherUniversityNames.php';
+        ?>
             <form action="/action_page.php">
                 <p>Order by: </p>
                 <input type="radio" id="courseNumber" name="orderby" value="courseNumber">
