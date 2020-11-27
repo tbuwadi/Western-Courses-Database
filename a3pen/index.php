@@ -89,17 +89,17 @@ include 'connecttodb.php';
     
     <div class="flex-item">
         <h3>List all Western course information:</h3>
-            <form action="/action_page.php">
+            <form action="getUWOCourses" method="post">
                 <p>Order by: </p>
-                <input type="radio" id="courseNumber" name="orderby" value="courseNumber">
+                <input type="radio" id="courseNumber" name="orderby" value="CourseNumber">
                 <label for="courseNumber">Course Number</label><br>
-                <input type="radio" id="courseName" name="orderby" value="courseName">
+                <input type="radio" id="courseName" name="orderby" value="CourseName">
                 <label for="courseName">Course Name</label><br>
                 <br>  
                 <p>Order in: </p>
-                <input type="radio" id="ascending" name="orderin" value="ascending">
+                <input type="radio" id="ascending" name="orderin" value="ASC">
                 <label for="ascending">Ascending Order</label><br>
-                <input type="radio" id="descending" name="orderin" value="descending">
+                <input type="radio" id="descending" name="orderin" value="DESC">
                 <label for="descending">Descending Order</label><br>  
                 <br>
                 <input type="submit" value="Search">
@@ -287,7 +287,9 @@ include 'connecttodb.php';
   </div>
 </div>
 
-
+<?php
+  mysqli_close($connection);
+?>
 
 </body>
 </html>
