@@ -110,7 +110,7 @@ include 'connecttodb.php';
     <div class="flex-item">
 
           <h3>List Other University Information</h3>
-          <form action="/action_page.php">
+          <form action="getUniversityInfo.php" method="post">
             <label for="uniList">Search by University Name:</label><br>
             <select name="uniList" id="uniList">
                 <!-- HAVE TO HANDLE IN PHP -->

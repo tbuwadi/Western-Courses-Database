@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Western Courses</title>
+<title>University Information</title>
 <style>
 body{
     font-family: arial, sans-serif;
@@ -28,11 +28,11 @@ tr:nth-child(even) {
 <?php
 include 'connecttodb.php';
 ?>
-<h1>Here are your courses:</h1>
+<h1>Here is the selected university information:</h1>
 <?php
-   $whichOrderBy= $_POST["orderby"];
-   $whichOrderIn= $_POST["orderin"];
-   $query = 'SELECT * FROM WesternCourse ORDER BY ' . $whichOrderBy . ' ' . $whichOrderIn . '';
+   $whichUniID= $_POST["uniList"];
+   print $whichUniID;
+   $query = 'SELECT * FROM OtherUniversity WHERE UniNumber=' . $whichUniID . '';
    $result=mysqli_query($connection,$query);
     if (!$result) {
          die("database query2 failed.");
