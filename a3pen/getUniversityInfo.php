@@ -31,7 +31,7 @@ include 'connecttodb.php';
 <h1>Here is the selected university information:</h1>
 <?php
    $whichUniID= $_POST["uniList"];
-   print $whichUniID;
+   echo "<h2>hi" . $whichUniID . "</h2>";
    $query = 'SELECT * FROM OtherUniversity WHERE UniNumber=' . $whichUniID . '';
    $result=mysqli_query($connection,$query);
     if (!$result) {
