@@ -6,7 +6,7 @@
 </head>
 <body>
 <?php
-include 'connectdb.php';
+include 'connecttodb.php';
 ?>
 <h1>Here are your courses:</h1>
 <ol>

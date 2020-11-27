@@ -89,7 +89,7 @@ include 'connecttodb.php';
     
     <div class="flex-item">
         <h3>List all Western course information:</h3>
-            <form action="getUWOCourses" method="post">
+            <form action="getUWOCourses.php" method="post">
                 <p>Order by: </p>
                 <input type="radio" id="courseNumber" name="orderby" value="CourseNumber">
                 <label for="courseNumber">Course Number</label><br>
