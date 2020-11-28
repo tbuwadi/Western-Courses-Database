@@ -19,7 +19,7 @@ include 'connecttodb.php';
     if (!$result) {
          die("database query2 failed.");
     }
-    echo("<h2>Selected University Information</h2>");
+    echo("<h2>Selected University Courses</h2>");
     echo("<table>");
     $first_row = true;
     while ($row = mysqli_fetch_assoc($result)) {

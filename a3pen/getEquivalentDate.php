@@ -28,7 +28,7 @@ include 'connecttodb.php';
     if (!$result) {
          die("database query2 failed.");
     }
-    echo("<h2>Equivalencies on or before Selected Date:</h2>")
+    echo("<h2>Equivalencies on or before Selected Date:</h2>");
     echo("<table>");
     $first_row = true;
     while ($row = mysqli_fetch_assoc($result)) {
