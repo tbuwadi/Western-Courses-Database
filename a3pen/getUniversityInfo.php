@@ -13,7 +13,7 @@ include 'connecttodb.php';
 <?php
    $whichUniID= $_POST["uniList"];
    $query = 'SELECT OfficialName, City, ProvinceCode, NickName FROM OtherUniversity WHERE UniNumber=' . $whichUniID . '';
-   $query2 = 'SELECT CourseCodem, OtherCourseName, TaughtToYear, OtherCourseWeight FROM OtherCourse WHERE UniNum=' . $whichUniID . '';
+   $query2 = 'SELECT CourseCode, OtherCourseName, TaughtToYear, OtherCourseWeight FROM OtherCourse WHERE UniNum=' . $whichUniID . '';
 
    $result=mysqli_query($connection,$query);
     if (!$result) {
