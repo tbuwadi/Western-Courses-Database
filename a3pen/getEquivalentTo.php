@@ -13,7 +13,7 @@ include 'connecttodb.php';
 <?php
    $whichCourse= $_POST["courseList"];
    $query = 'SELECT CourseName, CourseNumber, CourseWeight FROM WesternCourse WHERE CourseNumber="' . $whichCourse . '"';
-   $query2 = 'SELECT OtherCourseName, OfficialName, CourseCode, DateApproved
+   $query2 = 'SELECT OfficialName, OtherCourseName, CourseCode, OtherCourseWeight, DateApproved
    FROM OtherCourse, OtherUniversity, isEquivalentTo
    WHERE isEquivalentTo.WesternCourseNumber = "' . $whichCourse . '"  
    AND isEquivalentTo.OtherUniCourseCode = OtherCourse.CourseCode 
