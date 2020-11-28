@@ -76,11 +76,11 @@ table {
   }
   
   td, th {
-    border: 1px solid #e8b2ec;
+    border: 1px solid #abafe0;
     text-align: left;
     padding: 8px;
   }
   
   tr:nth-child(even) {
-    background-color: #e8b2ec;
+    background-color: #abafe0;
   }

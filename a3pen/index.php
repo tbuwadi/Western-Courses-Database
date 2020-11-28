@@ -144,8 +144,8 @@ include 'connecttodb.php';
             <option value="NULL">None</option>
 
         </select><br><br>
-        <input type="submit" name="action" value="Save Edits">
-        <input onclick="return confirm('Are you sure you want to delete?')" type="submit" name="action" value="Delete Selected Course">
+        <input onclick="return confirm('Are you sure you want to modify this course?')" type="submit" name="action" value="Save Edits">
+        <input type="submit" name="action" value="Delete Selected Course">
 
     </form>
   </div>

@@ -9,7 +9,7 @@
 <?php
 include 'connecttodb.php';
 ?>
-<h1>Here is the selected university information:</h1>
+<h1>Western Courses Database</h1>
 <?php
    $query = 'SELECT OfficialName, NickName
    FROM OtherUniversity
@@ -19,6 +19,7 @@ include 'connecttodb.php';
     if (!$result) {
          die("database query2 failed.");
     }
+    echo("<h2>Courses in system with no associated courses:</h2>");
     echo("<table>");
     $first_row = true;
     while ($row = mysqli_fetch_assoc($result)) {

@@ -9,7 +9,6 @@ include 'connecttodb.php';
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    Thanks.
 </body>
 </html>
 <?php
@@ -19,7 +18,7 @@ include 'connecttodb.php';
    $newSuffix = $_POST["selectedSuffix"];
 
     if (($_POST['action'] == 'Save Edits') AND $courseToChange!='') {
-
+        
         if($newCourseName!=''){
             $query = 'UPDATE WesternCourse SET CourseName="' . $newCourseName . '" WHERE CourseNumber="' . $courseToChange . '"';
             $result=mysqli_query($connection,$query);
@@ -41,6 +40,7 @@ include 'connecttodb.php';
                 die("database query failed.");
             }
         }
+        echo("<h2>Edits Saved.</h2>");
         
     } else if ($_POST['action'] == 'Delete Selected Course') {
         $seeUnique = mysqli_query($connection, 'SELECT WesternCourseNumber FROM isEquivalentTo WHERE WesternCourseNumber = "' . $courseToChange . '"');

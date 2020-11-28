@@ -9,7 +9,7 @@
 <?php
 include 'connecttodb.php';
 ?>
-<h1>Here are your courses:</h1>
+<h1>Western Courses:</h1>
 <?php
    $whichOrderBy= $_POST["orderby"];
    $whichOrderIn= $_POST["orderin"];

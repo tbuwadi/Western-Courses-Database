@@ -9,7 +9,7 @@
 <?php
 include 'connecttodb.php';
 ?>
-<h1>Here is the selected university information:</h1>
+<h1>Western Courses Database</h1>
 <?php
    $whichCourse= $_POST["courseList"];
    $query = 'SELECT CourseName, CourseNumber, CourseWeight FROM WesternCourse WHERE CourseNumber="' . $whichCourse . '"';
@@ -24,6 +24,7 @@ include 'connecttodb.php';
     if (!$result) {
          die("database query2 failed.");
     }
+    echo("<h2>Western Course Information:</h2>")
     echo("<table>");
     $first_row = true;
     while ($row = mysqli_fetch_assoc($result)) {
@@ -41,6 +42,7 @@ include 'connecttodb.php';
         }
         echo '</tr>';
     }
+    echo("<h2>Equivalent Courses:</h2>");
     echo("</table>");
     mysqli_free_result($result);
 

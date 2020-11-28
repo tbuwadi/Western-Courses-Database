@@ -9,7 +9,6 @@ include 'connecttodb.php';
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    Thanks.
 </body>
 </html>
 <?php
@@ -34,10 +33,10 @@ include 'connecttodb.php';
                     die("Failed");
                 }
             }else{
-                echo 'Please fill all required fields.';
+                echo("<h2>Please go back and fill all required fields.</h2>");
             }
         } else {
-            echo 'Invalid Code, must follow format CSXXXX';
+            echo("<h2>Please go back and fix. Western Course Code must follow the pattern CSXXXX</h2>");
         }
     }
     

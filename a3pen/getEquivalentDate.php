@@ -9,7 +9,7 @@
 <?php
 include 'connecttodb.php';
 ?>
-<h1>Here is the selected university information:</h1>
+<h1>Western Courses Database</h1>
 <?php
    $time = strtotime($_POST['equivDate']);
    if ($time) {
@@ -28,6 +28,7 @@ include 'connecttodb.php';
     if (!$result) {
          die("database query2 failed.");
     }
+    echo("<h2>Equivalencies on or before Selected Date:</h2>")
     echo("<table>");
     $first_row = true;
     while ($row = mysqli_fetch_assoc($result)) {

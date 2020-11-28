@@ -9,7 +9,6 @@ include 'connecttodb.php';
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    Thanks.
 </body>
 </html>
 <?php
@@ -28,6 +27,7 @@ include 'connecttodb.php';
         if (!$result) {
             die("Failed");
         }
+        echo("<h2>Thanks. Equivalence Saved.</h2>");
     }else{
         $query = 'INSERT INTO isEquivalentTo
         VALUES ("'.$westernCourse.'", "'.$otherCourse.'", "'.$uniNum.'", "'. $currDate .'")';
@@ -35,6 +35,7 @@ include 'connecttodb.php';
         if (!$result) {
             die("Failed");
         }
+        echo("<h2>Thanks. Equivalence Saved.</h2>");
     }
     
 ?>
