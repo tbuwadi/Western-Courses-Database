@@ -72,6 +72,7 @@ input[type=submit], button{
 table {
     border-collapse: collapse;
     width: 75%;
+    margin: 0 auto;
   }
   
   td, th {
