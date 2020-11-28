@@ -17,7 +17,7 @@ include 'connecttodb.php';
    } else {
         echo 'Invalid Date: ' . $_POST['equivDate'];
    }
-   $query = 'SELECT WesternCourseNumber, OtherCourseName, OfficialName, CourseCode, DateApproved
+   $query = 'SELECT WesternCourseNumber, CourseCode, OtherCourseName, OfficialName, DateApproved
    FROM OtherCourse, OtherUniversity, isEquivalentTo
    WHERE DateApproved <= "' . $new_date . '"
    AND isEquivalentTo.OtherUniCourseCode = OtherCourse.CourseCode 
