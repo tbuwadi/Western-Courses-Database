@@ -30,7 +30,7 @@ include 'connecttodb.php';
     //Otherwise, we add it to database.
     }else{
         if (preg_match($regex, $newCode)) {
-            if(($newCode!='') AND ($newName!='') AND ($newWeight!='')){
+            if(($newCode!='') AND ($newName!='') AND ($newWeight!='') AND (is_numeric($newWeight))){
                 $query = 'INSERT INTO WesternCourse
                 VALUES ("'.$newCode.'", "'.$newName.'", "'.$newWeight.'", "'.$newSuffix.'")';
                 $result=mysqli_query($connection,$query);
@@ -39,7 +39,7 @@ include 'connecttodb.php';
                 }
                 echo("<h2>Course Added to Database</h2>");
             }else{
-                echo("<h2>Please go back and fill all required fields.</h2>");
+                echo("<h2>Please go back and fill all required fields properly.</h2>");
             }
         } else {
             echo("<h2>Please go back and fix. Western Course Code must follow the pattern csXXXX (case sensitive).</h2>");

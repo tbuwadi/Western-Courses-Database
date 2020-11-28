@@ -9,7 +9,7 @@
 <?php
 include 'connecttodb.php';
 ?>
-<h1>Western Courses:</h1>
+<h1>Western Courses Database</h1>
 <?php
    $whichOrderBy= $_POST["orderby"];
    $whichOrderIn= $_POST["orderin"];
@@ -18,6 +18,7 @@ include 'connecttodb.php';
     if (!$result) {
          die("database query2 failed.");
     }
+    echo("<h2>Western Courses</h2>");
     echo("<table>");
     $first_row = true;
     while ($row = mysqli_fetch_assoc($result)) {
