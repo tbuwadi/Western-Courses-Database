@@ -173,7 +173,7 @@ include 'connecttodb.php';
             <option value="E">E</option>
             <option value="Y">Y</option>
             <option value="Z">Z</option>
-            <option value="NULL">None</option>
+            <option value="">None</option>
 
         </select><br><br>
         <input type="submit" value="Add Course">

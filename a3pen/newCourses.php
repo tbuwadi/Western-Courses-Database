@@ -22,7 +22,7 @@ include 'connecttodb.php';
     $seeUnique = mysqli_query($connection, 'SELECT CourseNumber FROM WesternCourse WHERE CourseNumber = "' . $newCode . '"');
     $matchFound = mysqli_num_rows($seeUnique) > 0 ? 'yes' : 'no';
     if($matchFound=='yes'){
-        echo 'Already Exists in DB';
+        echo("<h2>This course is already in the database.</h2>");
     }else{
         if (preg_match($regex, $newCode)) {
             if(($newCode!='') AND ($newName!='') AND ($newWeight!='')){
