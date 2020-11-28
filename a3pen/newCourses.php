@@ -6,8 +6,7 @@ include 'connecttodb.php';
 <head>
 <meta charset="utf-8">
 <title>University Information</title>
-<style>
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
     Thanks.
