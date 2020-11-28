@@ -12,8 +12,8 @@ include 'connecttodb.php';
 <h1>Western Courses Database</h1>
 <?php
    $whichUniID= $_POST["uniList"];
-   $query = 'SELECT * FROM OtherUniversity WHERE UniNumber=' . $whichUniID . '';
-   $query2 = 'SELECT * FROM OtherCourse WHERE UniNum=' . $whichUniID . '';
+   $query = 'SELECT OfficialName, City, ProvinceCode, NickName FROM OtherUniversity WHERE UniNumber=' . $whichUniID . '';
+   $query2 = 'SELECT CourseCodem, OtherCourseName, TaughtToYear, OtherCourseWeight FROM OtherCourse WHERE UniNum=' . $whichUniID . '';
 
    $result=mysqli_query($connection,$query);
     if (!$result) {
