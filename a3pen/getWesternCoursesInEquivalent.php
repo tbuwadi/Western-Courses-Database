@@ -1,5 +1,5 @@
 <?php
-$query = "SELECT WesternCourseNumber FROM isEquivalentTo";
+$query = "SELECT DISTINCT WesternCourseNumber FROM isEquivalentTo";
 $result = mysqli_query($connection,$query);
 if (!$result) {
     die("databases query failed.");

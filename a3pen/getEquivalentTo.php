@@ -30,10 +30,15 @@ include 'connecttodb.php';
 ?>
 <h1>Here is the selected university information:</h1>
 <?php
-   $whichUniID= $_POST["uniList"];
-   $query = 'SELECT * FROM OtherUniversity WHERE UniNumber=' . $whichUniID . '';
-   $query2 = 'SELECT * FROM OtherCourse WHERE UniNum=' . $whichUniID . '';
-
+   $whichCourse= $_POST["courseList"];
+   $query = 'SELECT CourseName, CourseNumber, CourseWeight FROM WesternCourse WHERE CourseNumber="' . $whichCourse . '"';
+   $query2 = 'SELECT OtherCourseName, OfficialName, CourseCode, DateApproved
+   FROM OtherCourse, OtherUniversity, isEquivalentTo
+   WHERE isEquivalentTo.WesternCourseNumber = "' . $whichCourse . '"  
+   AND isEquivalentTo.OtherUniCourseCode = OtherCourse.CourseCode 
+   AND isEquivalentTo.UniversityNum = OtherCourse.UniNum
+   AND isEquivalentTo.UniversityNum = OtherUniversity.UniNumber;';
+   
    $result=mysqli_query($connection,$query);
     if (!$result) {
          die("database query2 failed.");

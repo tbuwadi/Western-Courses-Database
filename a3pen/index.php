@@ -122,40 +122,38 @@ include 'connecttodb.php';
             <input type="submit" value="Search">
           </form>
           <br>
-          <form action="/action_page.php">
+          <form action="getProvinceInfo.php" method="post">
             <label for="provinceList">Search by Province:</label><br>
             <select name="provinceList" id="provinceList">
                 <!-- HAVE TO HANDLE IN PHP -->
                 <option value="" selected disabled hidden>Select Province</option>
-                <option value="Western">AB</option>
-                <option value="Western">BC</option>
-                <option value="Western">MB</option>
-                <option value="Western">NB</option>
-                <option value="Western">NL</option>
-                <option value="Western">NT</option>
-                <option value="Western">NS</option>
-                <option value="Western">NU</option>
-                <option value="Western">ON</option>
-                <option value="Western">PE</option>
-                <option value="Western">QC</option>
-                <option value="Western">SK</option>
-                <option value="Western">YT</option>
+                <option value="AB">AB</option>
+                <option value="BC">BC</option>
+                <option value="MB">MB</option>
+                <option value="NB">NB</option>
+                <option value="NL">NL</option>
+                <option value="NT">NT</option>
+                <option value="NS">NS</option>
+                <option value="NU">NU</option>
+                <option value="ON">ON</option>
+                <option value="PE">PE</option>
+                <option value="QC">QC</option>
+                <option value="SK">SK</option>
+                <option value="YT">YT</option>
             </select>
             <input type="submit" value="Search">
           </form>
           <br><br>
-
-          <button>Click here to show universities with no associated courses.</button>
-
+          <form action="getNoAssociations.php" method="post">
+                <input type="submit" value="Click here to show universities with no associated courses.">
+          </form>
     </div>
   
     <!-- Edit a course -->
     <div class="flex-item">
       
-        
     <h3>Find Equivalent Courses</h3>
-    <form action="/action_page.php">
-  
+    <form action="getEquivalentTo.php" method="post">
         <label for="courseList">Find courses equivalent to:</label><br>
         <select name="courseList" id="courseList">
             <!-- HAVE TO HANDLE IN PHP -->
@@ -168,12 +166,11 @@ include 'connecttodb.php';
         <br><br>
   
     </form>
-    <form action="/action_page.php">
+    <form action="getEquivalentDate.php" method="post">
         <label for="equivDate">Show Equivalencies made on or before:</label><br>
         <input type="date" id="equivDate" name="equivDate">
         <input type="submit" value="Search">
         <br><br>
-
     </form>
     </div>
   
@@ -191,40 +188,36 @@ include 'connecttodb.php';
   <!-- Edit a course -->
   <div class="flex-item">
     <h3>Edit a Western Course</h3>
-    <form action="/action_page.php">
-
+    <form action="modifyCourses.php" method="post">
         <label for="courseList">Select a Course to Modify:</label>
-        <select name="courseList" id="courseList">
+        <select name="courseListEdit" id="courseListEdit">
             <!-- HAVE TO HANDLE IN PHP -->
             <option value="" selected disabled hidden>Select Course</option>
             <?php
                     include 'getWesternCourses.php';
             ?>
         </select>
-
         <br><br>
-        
         <label for="courseNameEdit">Course Name: </label><br>
-        <input type="text" id="courseNameEdit" name="courseName"><br><br>
+        <input type="text" id="courseNameEdit" name="courseNameEdit"><br><br>
         
         <label for="courseWeightEdit">Course Weight: </label><br>
-        <input type="text" id="courseWeightEdit" name="courseWeight"><br><br>
+        <input type="text" id="courseWeightEdit" name="courseWeightEdit"><br><br>
 
-        <label for="courseList">Course Suffix:</label><br>
-        <select name="courseList" id="courseList">
+        <label for="selectedSuffix">Course Suffix:</label><br>
+        <select name="selectedSuffix" id="selectedSuffix">
             <!-- HAVE TO HANDLE IN PHP -->
             <option value="" selected disabled hidden>Select a Course Suffix</option>
-            <option value="AB">A/B</option>
-            <option value="AB">F/G</option>
-            <option value="AB">E</option>
-            <option value="AB">Y</option>
-            <option value="AB">Z</option>
-            <option value="AB">None</option>
+            <option value="A/B">A/B</option>
+            <option value="F/G">F/G</option>
+            <option value="E">E</option>
+            <option value="Y">Y</option>
+            <option value="Z">Z</option>
+            <option value="NULL">None</option>
 
         </select><br><br>
-
-        <input type="submit" value="Save Edits">
-        <input type="submit" value="Delete Selected Course">
+        <input type="submit" name="action" value="Save Edits">
+        <input onclick="return confirm('Are you sure you want to delete?')" type="submit" name="action" value="Delete Selected Course">
 
     </form>
   </div>
@@ -232,40 +225,39 @@ include 'connecttodb.php';
   <!-- Add a new course  -->
   <div class="flex-item">
     <h3>Add New Western Course</h3>
-    <form action="/action_page.php">
+    <form action="newCourses.php" method="post">
         
         <label for="courseCode">Course Code: </label><br>
-        <input type="text" id="courseCodeNew" name="courseCodeNew"><br><br>
+        <input type="text" id="newCode" name="newCode"><br><br>
 
         <label for="courseName">Course Name: </label><br>
-        <input type="text" id="courseNameNew" name="courseNameNew"><br><br>
+        <input type="text" id="newName" name="newName"><br><br>
         
         <label for="courseWeight">Course Weight: </label><br>
-        <input type="text" id="courseWeightNew" name="courseWeightNew"><br><br>
+        <input type="text" id="newWeight" name="newWeight"><br><br>
 
         <label for="courseList">Course Suffix:</label><br>
-        <select name="courseList" id="courseList">
+        <select name="newSuffix" id="newSuffix">
             <!-- HAVE TO HANDLE IN PHP -->
             <option value="" selected disabled hidden>Select a Course Suffix</option>
-            <option value="AB">A/B</option>
-            <option value="AB">F/G</option>
-            <option value="AB">E</option>
-            <option value="AB">Y</option>
-            <option value="AB">Z</option>
-            <option value="AB">None</option>
+            <option value="A/B">A/B</option>
+            <option value="F/G">F/G</option>
+            <option value="E">E</option>
+            <option value="Y">Y</option>
+            <option value="Z">Z</option>
+            <option value="NULL">None</option>
 
         </select><br><br>
-
         <input type="submit" value="Add Course">
     </form>
   </div>
 
   <div class="flex-item">
     <h3>New Equivalence</h3>
-    <form action="/action_page.php">
+    <form action="setEquivalence.php" method="post">
         
-        <label for="courseList">Select Western Course:</label><br>
-        <select name="courseList" id="courseList">
+        <label for="equivalentWestern">Select Western Course:</label><br>
+        <select name="equivalentWestern" id="equivalentWestern">
             <!-- HAVE TO HANDLE IN PHP -->
             <option value="" selected disabled hidden>Select Course</option>
             <?php
@@ -273,8 +265,8 @@ include 'connecttodb.php';
             ?>
         </select><br><br>
 
-        <label for="courseList">Select Equivalent Course:</label><br>
-        <select name="courseList" id="courseList">
+        <label for="equivalentOther">Select Equivalent Course:</label><br>
+        <select name="equivalentOther" id="equivalentOther">
             <!-- HAVE TO HANDLE IN PHP -->
             <option value="" selected disabled hidden>Select Course</option>
             <?php

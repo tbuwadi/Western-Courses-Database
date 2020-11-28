@@ -30,10 +30,19 @@ include 'connecttodb.php';
 ?>
 <h1>Here is the selected university information:</h1>
 <?php
-   $whichUniID= $_POST["uniList"];
-   $query = 'SELECT * FROM OtherUniversity WHERE UniNumber=' . $whichUniID . '';
-   $query2 = 'SELECT * FROM OtherCourse WHERE UniNum=' . $whichUniID . '';
-
+   $time = strtotime($_POST['equivDate']);
+   if ($time) {
+        $new_date = date('Y-m-d', $time);
+   } else {
+        echo 'Invalid Date: ' . $_POST['equivDate'];
+   }
+   $query = 'SELECT OtherCourseName, OfficialName, CourseCode, DateApproved
+   FROM OtherCourse, OtherUniversity, isEquivalentTo
+   WHERE DateApproved <= "' . $new_date . '"
+   AND isEquivalentTo.OtherUniCourseCode = OtherCourse.CourseCode 
+   AND isEquivalentTo.UniversityNum = OtherCourse.UniNum
+   AND isEquivalentTo.UniversityNum = OtherUniversity.UniNumber ORDER BY DateApproved DESC;';
+   
    $result=mysqli_query($connection,$query);
     if (!$result) {
          die("database query2 failed.");
@@ -57,31 +66,6 @@ include 'connecttodb.php';
     }
     echo("</table>");
     mysqli_free_result($result);
-
-    echo("<br><br>");
-    $result2=mysqli_query($connection,$query2);
-    if (!$result2) {
-         die("database query2 failed.");
-    }
-    echo("<table>");
-    $first_row = true;
-    while ($row = mysqli_fetch_assoc($result2)) {
-        if ($first_row) {
-            $first_row = false;
-            echo '<tr>';
-            foreach($row as $key => $field) {
-                echo '<th>' . htmlspecialchars($key) . '</th>';
-            }
-            echo '</tr>';
-        }
-        echo '<tr>';
-        foreach($row as $key => $field) {
-            echo '<td>' . htmlspecialchars($field) . '</td>';
-        }
-        echo '</tr>';
-    }
-    echo("</table>");
-    mysqli_free_result($result2);
 
 ?>
 <?php
