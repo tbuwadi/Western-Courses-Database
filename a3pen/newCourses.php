@@ -32,11 +32,12 @@ include 'connecttodb.php';
                 if (!$result) {
                     die("Failed");
                 }
+                echo("<h2>Course Added to Database</h2>");
             }else{
                 echo("<h2>Please go back and fill all required fields.</h2>");
             }
         } else {
-            echo("<h2>Please go back and fix. Western Course Code must follow the pattern CSXXXX</h2>");
+            echo("<h2>Please go back and fix. Western Course Code must follow the pattern csXXXX (case sensitive).</h2>");
         }
     }
     

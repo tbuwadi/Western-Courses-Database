@@ -42,7 +42,6 @@ include 'connecttodb.php';
         }
         echo '</tr>';
     }
-    echo("<h2>Equivalent Courses:</h2>");
     echo("</table>");
     mysqli_free_result($result);
 
@@ -51,6 +50,7 @@ include 'connecttodb.php';
     if (!$result2) {
          die("database query2 failed.");
     }
+    echo("<h2>Equivalent Courses:</h2>");
     echo("<table>");
     $first_row = true;
     while ($row = mysqli_fetch_assoc($result2)) {
