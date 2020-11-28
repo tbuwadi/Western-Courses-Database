@@ -12,7 +12,7 @@ include 'connecttodb.php';
 <h1>Western Courses Database</h1>
 <?php
    $whichUniID= $_POST["uniList"];
-   $query = 'SELECT OfficialName 'Official Name' , City, ProvinceCode 'Province', NickName 'Acronym' FROM OtherUniversity WHERE UniNumber=' . $whichUniID . '';
+   $query = 'SELECT OfficialName Official Name, City, ProvinceCode Province, NickName Acronym FROM OtherUniversity WHERE UniNumber=' . $whichUniID . '';
    $query2 = 'SELECT * FROM OtherCourse WHERE UniNum=' . $whichUniID . '';
 
    $result=mysqli_query($connection,$query);
