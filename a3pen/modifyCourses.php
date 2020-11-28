@@ -33,12 +33,10 @@ include 'connecttodb.php';
                 die("database query failed.");
             }
         }
-        if($newSuffix!=''){
-            $query = 'UPDATE WesternCourse SET CourseSuffix="' . $newSuffix . '" WHERE CourseNumber="' . $courseToChange . '"';
-            $result=mysqli_query($connection,$query);
-            if (!$result) {
-                die("database query failed.");
-            }
+        $query = 'UPDATE WesternCourse SET CourseSuffix="' . $newSuffix . '" WHERE CourseNumber="' . $courseToChange . '"';
+        $result=mysqli_query($connection,$query);
+        if (!$result) {
+            die("database query failed.");
         }
         echo("<h2>Edits Saved.</h2>");
         
