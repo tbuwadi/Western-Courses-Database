@@ -20,6 +20,8 @@ include 'connecttodb.php';
          die("database query2 failed.");
     }
     echo("<h2>Courses in system with no associated courses:</h2>");
+
+    //Create a table with the information from the query
     echo("<table>");
     $first_row = true;
     while ($row = mysqli_fetch_assoc($result)) {

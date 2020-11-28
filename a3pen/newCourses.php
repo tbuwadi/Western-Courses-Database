@@ -18,11 +18,16 @@ include 'connecttodb.php';
    $newSuffix = $_POST["newSuffix"];
 
    $regex = '/^cs\d{4}$/';
+
    //Check if the code is unique or not
     $seeUnique = mysqli_query($connection, 'SELECT CourseNumber FROM WesternCourse WHERE CourseNumber = "' . $newCode . '"');
     $matchFound = mysqli_num_rows($seeUnique) > 0 ? 'yes' : 'no';
+
+    //If code is not unique let user know
     if($matchFound=='yes'){
         echo("<h2>This course is already in the database.</h2>");
+
+    //Otherwise, we add it to database.
     }else{
         if (preg_match($regex, $newCode)) {
             if(($newCode!='') AND ($newName!='') AND ($newWeight!='')){

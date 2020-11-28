@@ -15,12 +15,13 @@ include 'connecttodb.php';
    $westernCourse = $_POST["equivalentWestern"];
    $otherString = $_POST["equivalentOther"];
    list($otherCourse, $uniNum) = explode('-', $otherString);
-   //Check if the code is unique or not
-   
    $currDate = date("Y-m-d");
 
+    //Determine if the equivalence already exists or not
     $seeUnique = mysqli_query($connection, 'SELECT * FROM isEquivalentTo WHERE WesternCourseNumber="' . $westernCourse . '" AND OtherUniCourseCode="' . $otherCourse . '"');
     $matchFound = mysqli_num_rows($seeUnique) > 0 ? 'yes' : 'no';
+    
+    //If it exists, update the date approved to today
     if($matchFound=='yes'){
         $query = 'UPDATE isEquivalentTo SET DateApproved="' . $currDate . '" WHERE WesternCourseNumber="' . $westernCourse . '" AND OtherUniCourseCode="' . $otherCourse . '"';
         $result=mysqli_query($connection,$query);
@@ -28,6 +29,8 @@ include 'connecttodb.php';
             die("Failed");
         }
         echo("<h2>Thanks. Equivalence Saved.</h2>");
+     
+    //If it doesnt exist, add it to DB
     }else{
         $query = 'INSERT INTO isEquivalentTo
         VALUES ("'.$westernCourse.'", "'.$otherCourse.'", "'.$uniNum.'", "'. $currDate .'")';

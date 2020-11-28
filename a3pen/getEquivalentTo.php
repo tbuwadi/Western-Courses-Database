@@ -25,6 +25,8 @@ include 'connecttodb.php';
          die("database query2 failed.");
     }
     echo("<h2>Western Course Information:</h2>");
+
+    //Create table with information from the query
     echo("<table>");
     $first_row = true;
     while ($row = mysqli_fetch_assoc($result)) {
@@ -50,6 +52,8 @@ include 'connecttodb.php';
     if (!$result2) {
          die("database query2 failed.");
     }
+
+    //Create table with information from the query
     echo("<h2>Equivalent Courses:</h2>");
     echo("<table>");
     $first_row = true;

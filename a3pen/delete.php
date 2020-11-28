@@ -9,17 +9,18 @@ include 'connecttodb.php';
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    Deleted.
 </body>
 </html>
 <?php
+
+   //Delete a course
    $westernCourse = $_POST["courseCode"];
     $query = 'DELETE FROM WesternCourse WHERE CourseNumber="' . $westernCourse . '"';
     $result=mysqli_query($connection,$query);
     if (!$result) {
         die("Failed");
     }
-    
+    echo("<h2>Deleted.</h2>");
 ?>
 <?php
    mysqli_close($connection);

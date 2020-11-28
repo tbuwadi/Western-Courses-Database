@@ -11,6 +11,8 @@ include 'connecttodb.php';
 ?>
 <h1>Western Courses Database</h1>
 <?php
+
+   //Determine required variables and queries
    $whichUniID= $_POST["uniList"];
    $query = 'SELECT OfficialName, City, ProvinceCode, NickName FROM OtherUniversity WHERE UniNumber=' . $whichUniID . '';
    $query2 = 'SELECT CourseCode, OtherCourseName, TaughtToYear, OtherCourseWeight FROM OtherCourse WHERE UniNum=' . $whichUniID . '';
@@ -20,6 +22,8 @@ include 'connecttodb.php';
          die("database query2 failed.");
     }
     echo("<h2>Selected University Courses</h2>");
+
+    // Create a table with the university information
     echo("<table>");
     $first_row = true;
     while ($row = mysqli_fetch_assoc($result)) {
@@ -45,6 +49,8 @@ include 'connecttodb.php';
     if (!$result2) {
          die("database query2 failed.");
     }
+
+    //Create a table with the university courses
     echo("<h2>This University's Courses:</h2>");
     echo("<table>");
     $first_row = true;

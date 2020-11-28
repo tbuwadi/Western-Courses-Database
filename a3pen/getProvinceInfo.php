@@ -11,6 +11,8 @@ include 'connecttodb.php';
 ?>
 <h1>Western Courses Database</h1>
 <?php
+
+   //Determine required variables
    $whichProv= $_POST["provinceList"];
    $query = 'SELECT OfficialName, NickName FROM OtherUniversity WHERE ProvinceCode="' . $whichProv . '"';
 
@@ -19,6 +21,8 @@ include 'connecttodb.php';
          die("database query2 failed.");
     }
     echo("<h2>Universities in this Province:</h2>");
+
+    //Create a table with the information from the query
     echo("<table>");
     $first_row = true;
     while ($row = mysqli_fetch_assoc($result)) {

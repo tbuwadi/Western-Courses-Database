@@ -11,12 +11,16 @@ include 'connecttodb.php';
 ?>
 <h1>Western Courses Database</h1>
 <?php
+
+   //Get date entered and properly convert it
    $time = strtotime($_POST['equivDate']);
    if ($time) {
         $new_date = date('Y-m-d', $time);
    } else {
         echo 'Invalid Date: ' . $_POST['equivDate'];
    }
+
+   //Get query
    $query = 'SELECT WesternCourseNumber, CourseCode, OtherCourseName, OfficialName, DateApproved
    FROM OtherCourse, OtherUniversity, isEquivalentTo
    WHERE DateApproved <= "' . $new_date . '"
@@ -29,6 +33,8 @@ include 'connecttodb.php';
          die("database query2 failed.");
     }
     echo("<h2>Equivalencies on or before Selected Date:</h2>");
+
+    //Create table with information from the query
     echo("<table>");
     $first_row = true;
     while ($row = mysqli_fetch_assoc($result)) {

@@ -6,15 +6,19 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+<!-- Connect to DB -->
 <?php
 include 'connecttodb.php';
 ?>
-<!-- Title -->
-<h1>Western Courses Database</h1>
 
+<!-- Titles -->
+<h1>Western Courses Database</h1>
 <h2>Find Information</h2>
+
 <div class="flex-container">
-    
+
+    <!-- Query Western Course Information -->
     <div class="flex-item">
         <h3>List all Western course information:</h3>
             <form action="getUWOCourses.php" method="post">
@@ -34,7 +38,7 @@ include 'connecttodb.php';
             </form>
       </div>
 
-    <!-- Determine if search by uni name or province -->
+    <!-- Query Other University Information-->
     <div class="flex-item">
 
           <h3>List Other University Information</h3>
@@ -77,14 +81,14 @@ include 'connecttodb.php';
           </form>
     </div>
   
-    <!-- Edit a course -->
+    <!-- Query Equivalent Courses -->
     <div class="flex-item">
       
     <h3>Find Equivalent Courses</h3>
     <form action="getEquivalentTo.php" method="post">
         <label for="courseList">Find courses equivalent to:</label><br>
         <select name="courseList" id="courseList">
-            <!-- HAVE TO HANDLE IN PHP -->
+
             <option value="" selected disabled hidden>Select Course</option>
             <?php
                     include 'getWesternCoursesInEquivalent.php';
@@ -102,24 +106,19 @@ include 'connecttodb.php';
     </form>
     </div>
   
-    <!-- Add a new course  -->
-    
-  
-    
   </div>
 
 <h2>Modify Information</h2>
 <div class="flex-container">
-  <!-- Query Western Course Information -->
-  
 
-  <!-- Edit a course -->
+  
+  <!-- Edit a Western course -->
   <div class="flex-item">
     <h3>Edit a Western Course</h3>
     <form action="modifyCourses.php" method="post">
         <label for="courseList">Select a Course to Modify:</label>
         <select name="courseListEdit" id="courseListEdit">
-            <!-- HAVE TO HANDLE IN PHP -->
+
             <option value="" selected disabled hidden>Select Course</option>
             <?php
                     include 'getWesternCourses.php';
@@ -134,7 +133,7 @@ include 'connecttodb.php';
 
         <label for="selectedSuffix">Course Suffix:</label><br>
         <select name="selectedSuffix" id="selectedSuffix">
-            <!-- HAVE TO HANDLE IN PHP -->
+ 
             <option value="" selected disabled hidden>Select a Course Suffix</option>
             <option value="A/B">A/B</option>
             <option value="F/G">F/G</option>
@@ -149,6 +148,7 @@ include 'connecttodb.php';
 
     </form>
   </div>
+
 
   <!-- Add a new course  -->
   <div class="flex-item">
@@ -166,7 +166,7 @@ include 'connecttodb.php';
 
         <label for="courseList">Course Suffix:</label><br>
         <select name="newSuffix" id="newSuffix">
-            <!-- HAVE TO HANDLE IN PHP -->
+
             <option value="" selected disabled hidden>Select a Course Suffix</option>
             <option value="A/B">A/B</option>
             <option value="F/G">F/G</option>
@@ -180,13 +180,14 @@ include 'connecttodb.php';
     </form>
   </div>
 
+<!-- Add a new Equivalence -->
   <div class="flex-item">
     <h3>New Equivalence</h3>
     <form action="setEquivalence.php" method="post">
         
         <label for="equivalentWestern">Select Western Course:</label><br>
         <select name="equivalentWestern" id="equivalentWestern">
-            <!-- HAVE TO HANDLE IN PHP -->
+
             <option value="" selected disabled hidden>Select Course</option>
             <?php
                     include 'getWesternCourses.php';
@@ -195,7 +196,7 @@ include 'connecttodb.php';
 
         <label for="equivalentOther">Select Equivalent Course:</label><br>
         <select name="equivalentOther" id="equivalentOther">
-            <!-- HAVE TO HANDLE IN PHP -->
+            
             <option value="" selected disabled hidden>Select Course</option>
             <?php
                     include 'getOtherCourse.php';
